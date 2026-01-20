@@ -1,26 +1,11 @@
 import React, { useState, Suspense } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
-import { OrbitControls, Stage } from '@react-three/drei';
+import { OrbitControls, Stage, Loader } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 function Model({ url, visible }) {
   const gltf = useLoader(GLTFLoader, url);
   return <primitive object={gltf.scene} visible={visible} />;
-}
-
-function Loader() {
-  return (
-    <div style={{
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      color: '#fff',
-      fontSize: '1.2rem'
-    }}>
-      Loading...
-    </div>
-  );
 }
 
 function App() {
@@ -85,7 +70,12 @@ function App() {
           <OrbitControls makeDefault />
         </Suspense>
       </Canvas>
-      <Suspense fallback={<Loader />} />
+      <Loader 
+        containerStyles={{ background: '#1a1a1a' }} // Dark background
+        innerStyles={{ background: '#333', width: '300px', height: '10px' }} // Progress bar container
+        barStyles={{ background: '#646cff', height: '10px' }} // Progress bar fill
+        dataStyles={{ color: '#fff', fontSize: '1.2rem', fontFamily: 'Inter, sans-serif' }} // Text style
+      />
     </div>
   );
 }
