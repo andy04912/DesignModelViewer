@@ -129,8 +129,8 @@ function Model({ url, visible }) {
 function App() {
   // Static configuration for models
   const models = [
-    { name: '完整版實照', url: '/完整版實照.glb' },
-    { name: '完整版白框', url: '/完整版白框.glb' }
+    { name: '完整版實照', url: '/完整版實照_final.glb' },
+    { name: '完整版白框', url: '/完整版白框_final.glb' }
   ];
   
   const [activeIndex, setActiveIndex] = useState(0);
